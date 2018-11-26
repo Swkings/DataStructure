@@ -62,24 +62,21 @@ class SLinkList:
 	def insert(self, index, elem):
 		node = Node(elem)
 		self.length += 1  # 先加1，保证能加在最后位置
-		if self.isEmpty() and index == 1:
-			self.head.next = node
+		if 0 < index <= self.length:
+			pNode = self.head
+			pIndex = 0
+			while pIndex < index-1 and pNode:
+				pNode = pNode.next
+				pIndex += 1
+			temp = pNode.next
+			pNode.next = node
+			node.next = temp
+			if index == self.length:
+				self.end.next = node
+				self.end = self.end.next
 		else:
-			if 0 < index <= self.length:
-				pNode = self.head
-				pIndex = 0
-				while pIndex < index-1 and pNode:
-					pNode = pNode.next
-					pIndex += 1
-				temp = pNode.next
-				pNode.next = node
-				node.next = temp
-				if index == self.length:
-					self.end.next = node
-					self.end = self.end.next
-			else:
-				self.length -= 1  # 出错减1
-				raise IndexError("Index is out of range.")
+			self.length -= 1  # 出错减1
+			raise IndexError("Index is out of range.")
 
 	def delete(self, index):
 		if 0 < index <= self.length:
@@ -113,19 +110,6 @@ class SLinkList:
 
 if __name__ == "__main__":
 	sList = SLinkList()
-	sList.create(1)
+	sList.insert(1, 1)
 	sList.create(2)
-	sList.print()
-	sList.insert(3, 3)
-	sList.print()
-	sList.create(4)
-	sList.print()
-	sList.delete(4)
-	sList.print()
-	sList.create(4)
-	sList.print()
-	sList.reverse()
-	sList.print()
-	sList.create(5)
-	sList.print()
 	print(sList)
