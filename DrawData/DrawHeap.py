@@ -49,5 +49,5 @@ class DrawHeap:
 
 if __name__ == "__main__":
 	heap = [7, 5, 6, 4, 2, 1, 3]
-	gra = DrawHeap(heap)
+	gra = DrawHeap(heap, filename=DrawHeap.__class__.__name__, directory='output')
 	gra.draw()
