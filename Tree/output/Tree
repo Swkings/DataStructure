@@ -1,0 +1,14 @@
+// The Tree
+digraph {
+	A [label="A:1"]
+	B [label="B:2"]
+	A -> B
+	E [label="E:2"]
+	A -> E
+	F [label="F:2"]
+	A -> F
+	C [label="C:3"]
+	B -> C
+	D [label="D:4"]
+	B -> D
+}
